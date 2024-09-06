@@ -16,7 +16,7 @@ Outro desafio está relacionado à duplicação de e-mails e outros campos no ba
 
 ## Sugestões de Melhorias
 - **Escalabilidade**: Alterar o tipo de dado dos IDs de `Integer` para `Double` para melhorar a escalabilidade do sistema.
-- **Segurança**: Implementar mecanismos de verificação de e-mails para evitar duplicações e problemas futuros.
+- **Segurança**: Implementar mecanismos de verificação de e-mails e outros campos para evitar duplicações e problemas futuros. Implementar tokenização de segurança.
 
 ## Funcionalidades Principais
 1. **Busca de Animais por Filtros**: A aplicação permite que o usuário busque animais com base no tipo, cidade e estado. Essa funcionalidade facilita o encontro do animal ideal para adoção.
