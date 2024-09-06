@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/dashboardOng.css">
+    <title>AdotaPet - Dashboard</title>
+    <link rel="icon" href="/img/logo.png" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<header class="menu">
+    <div class="menu-logotipo">
+        <a href="index.html">
+            <img href="index.html" src="/img/logo.png" width="120" height="120" alt="">
+        </a>
+        <h1>Cuidado, amor, resgate e família</h1>
+    </div>
+</header>
+
+<div class="dashboard-container">
+    <div class="sidebar">
+        <h2>Dashboard</h2>
+        <ul>
+            <li><a href="#" id="dashboardBtn">Inicio</a></li>
+            <li><a href="#" id="addAnimalBtn">Adicionar Animal</a></li>
+            <li><a href="#" id="modifyDataBtn">Modificar Dados</a></li>
+            <li><a href="#" id="deleteAccountBtn">Excluir Conta</a></li>
+            <li><a href="#" id="adocoesBtn">Adoções</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <h2 id="main-title">Meus Animais</h2>
+        <div id="loading-spinner" class="loading-spinner">Carregando...</div>
+        <div id="animalList" class="animal-list">
+            <!-- Lista de animais será inserida aqui -->
+        </div>
+        <div id="adoptionList" class="adoption-list" style="display:none;">
+            <!-- Lista de adoções será inserida aqui -->
+        </div>
+    </div>
+</div>
+
+<!-- Modal para adicionar/editar animal -->
+<div id="animalModal" class="modal">
+    <div class="modal-content">
+        <span class="closeBtn">&times;</span>
+        <form id="animalForm">
+            <h2 id="modalTitle">Adicionar Animal</h2>
+            <div class="form-group">
+                <label for="animalName">Nome</label>
+                <input type="text" id="animalName" name="nome" required>
+            </div>
+            <div class="form-group">
+                <label for="tipo">Espécie</label>
+                <input type="text" id="tipo" name="tipo" required>
+            </div>
+            <div class="form-group">
+                <label for="animalAge">Idade</label>
+                <input type="number" id="animalAge" name="idade" required>
+            </div>
+            <div class="form-group">
+                <label for="raca">Raça</label>
+                <input type="text" id="raca" name="raca" required>
+            </div>
+            <div class="form-group">
+                <label for="sexo">Sexo</label>
+                <input type="text" id="sexo" name="sexo" required>
+            </div>
+            <div class="form-group">
+                <label for="descricao">Descrição</label>
+                <input type="text" id="descricao" name="descricao" required>
+            </div>
+            <div class="form-group">
+                <label for="imagem">Imagem</label>
+                <input type="file" id="imagem" name="imagem">
+                <img id="imagemPreview" src="" alt="Pré-visualização da imagem">
+                <input type="hidden" id="imagemAtual" name="imagemAtual">
+            </div>
+            <div class="form-actions">
+                <button type="submit" id="saveAnimalBtn">Salvar</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Modal de confirmação para exclusão -->
+<div id="deleteConfirmModal" class="modal">
+    <div class="modal-content">
+        <span class="closeBtn">&times;</span>
+        <h2>Confirmar Exclusão</h2>
+        <p>Você tem certeza que deseja excluir este animal?</p>
+        <div class="form-actions">
+            <button id="confirmDeleteBtn">Excluir</button>
+            <button id="cancelDeleteBtn">Cancelar</button>
+        </div>
+    </div>
+</div>
+
+<div id="modifyDataModal" class="modal">
+    <div class="modal-content">
+        <span class="closeBtn">&times;</span>
+        <form id="modifyDataForm">
+            <h2>Modificar Dados da ONG</h2>
+            <div class="form-group">
+                <label for="ongNome">Nome</label>
+                <input type="text" id="ongNome" name="ongNome" required>
+            </div>
+            <div class="form-group">
+                <label for="ongDescricao">Descrição</label>
+                <input type="text" id="ongDescricao" name="ongDescricao" required>
+            </div>
+            <div class="form-group">
+                <label for="ongEmail">Email</label>
+                <input type="email" id="ongEmail" name="ongEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="ongTelefone">Telefone</label>
+                <input type="text" id="ongTelefone" name="ongTelefone" required>
+            </div>
+            <div class="form-group">
+                <label for="ongEndereco">Endereço</label>
+                <input type="text" id="ongEndereco" name="ongEndereco" required>
+            </div>
+            <div class="form-group">
+                <label for="ongCidade">Cidade</label>
+                <input type="text" id="ongCidade" name="ongCidade" required>
+            </div>
+            <div class="form-group">
+                <label for="ongEstado">Estado</label>
+                <input type="text" id="ongEstado" name="ongEstado" required>
+            </div>
+            <div class="form-group">
+                <label for="ongCnpj">CNPJ</label>
+                <input type="text" id="ongCnpj" name="ongCnpj" required>
+            </div>
+            <div class="form-group">
+                <label for="ongPix">PIX</label>
+                <input type="text" id="ongPix" name="ongPix" required>
+            </div>
+            <div class="form-group">
+                <label for="ongSenha">Senha</label>
+                <input type="password" id="ongSenha" name="ongSenha" required>
+            </div>
+            <div class="form-actions">
+                <button type="submit">Salvar</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="deleteAccountConfirmModal" class="modal">
+    <div class="modal-content">
+        <span class="closeBtn">&times;</span>
+        <h2>Confirmar Exclusão da Conta</h2>
+        <p>Você tem certeza que deseja excluir sua conta? Esta ação não pode ser desfeita.</p>
+        <div class="form-actions">
+            <button id="confirmAccountDeleteBtn">Confirmar Exclusão</button>
+            <button class="cancelBtn">Cancelar</button>
+        </div>
+    </div>
+</div>
+<script src="js/dashboardOng.js"></script>
+</body>
+</html>
